@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import ShowReelList from './components/ShowReelList';
 import CreateShowReel from './components/ShowReelForm';
 import VideoClipForm from './components/VideoClipForm';
-import VideoClipList from './components/VideoClipList';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 const App = () => {
@@ -30,7 +29,6 @@ const App = () => {
                 <Route path="/show_reels" element={<ShowReelList />} />
                 <Route path="/create_reel" element={<CreateShowReel />} />
                 <Route path="/create_clip/:showReelId" element={<VideoClipForm />} />
-                <Route path="/show_clips" element={<VideoClipList />} />
                 <Route path="/" element={<ShowReelList />} index />
               </Routes>
             </div>
