@@ -14,6 +14,7 @@ const ShowReelList = () => {
 
   const fetchShowReels = async () => {
     try {
+      console.log(`${backendUrl}/show_reels`);
       const response = await axios.get(`${backendUrl}/show_reels`);
       setShowReels(response.data);
     } catch (error) {
