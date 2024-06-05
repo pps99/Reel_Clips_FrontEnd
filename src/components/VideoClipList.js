@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const VideoClipList = ({ showReel, clips }) => {
   const [updatedClips, setUpdatedClips] = useState(clips);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     // Update the 'updatedClips' state whenever 'clips' prop changes
@@ -11,7 +12,7 @@ const VideoClipList = ({ showReel, clips }) => {
 
   const handleRemoveClip = async (clipId) => {
     try {
-      await axios.delete(`/show_reels/${showReel.id}/clips/${clipId}`);
+      await axios.delete(`${backendUrl}/show_reels/${showReel.id}/clips/${clipId}`);
       // Remove the clip from the 'clips' array passed as props
       const newClips = updatedClips.filter(updatedClip => updatedClip.id !== clipId);
       setUpdatedClips(newClips); // Update the state with the new clips array

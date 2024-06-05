@@ -12,12 +12,13 @@ const VideoClipForm = () => {
   const [videoDefinition, setVideoDefinition] = useState('SD');
   const [errorMessages, setErrorMessages] = useState([]);
   const navigate = useNavigate();
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
-      await axios.post(`/show_reels/${showReelId}/clips`, {
+      await axios.post(`${backendUrl}/show_reels/${showReelId}/clips`, {
         clip: {
           name,
           description,

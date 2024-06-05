@@ -6,6 +6,7 @@ const ShowReelList = () => {
   const [showReels, setShowReels] = useState([]);
   const [expandedReelId, setExpandedReelId] = useState(null);
   const [associatedClips, setAssociatedClips] = useState([]);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     fetchShowReels();
@@ -13,7 +14,7 @@ const ShowReelList = () => {
 
   const fetchShowReels = async () => {
     try {
-      const response = await axios.get('/show_reels');
+      const response = await axios.get(`${backendUrl}/show_reels`);
       setShowReels(response.data);
     } catch (error) {
       console.error('Error fetching show reels:', error);
@@ -22,7 +23,7 @@ const ShowReelList = () => {
 
   const fetchAssociatedClips = async (showReelId) => {
     try {
-      const response = await axios.get(`/show_reels/${showReelId}/clips`);
+      const response = await axios.get(`${backendUrl}/show_reels/${showReelId}/clips`);
       setAssociatedClips(response.data);
     } catch (error) {
       console.error('Error fetching associated clips:', error);
@@ -41,7 +42,7 @@ const ShowReelList = () => {
 
   const handleRemoveClip = async (showReelId, clipId) => {
     try {
-      await axios.delete(`/show_reels/${showReelId}/clips/${clipId}`);
+      await axios.delete(`${backendUrl}/show_reels/${showReelId}/clips/${clipId}`);
       fetchAssociatedClips(showReelId); // Re-fetch the associated clips after removal
       fetchShowReels(); // Re-fetch the show reels to update the total duration
     } catch (error) {

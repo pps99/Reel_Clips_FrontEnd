@@ -7,14 +7,16 @@ const ShowReelForm = () => {
   const [videoStandard, setVideoStandard] = useState('PAL');
   const [videoDefinition, setVideoDefinition] = useState('SD');
   const [isLoading, setIsLoading] = useState(false);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.post('/show_reels', {
+      await axios.post(`${backendUrl}/show_reels`, {
         show_reel: {
           name,
           video_standard: videoStandard,
