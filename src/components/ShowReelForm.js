@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
-const ShowReelForm = ({  }) => {
+const ShowReelForm = () => {
   const [name, setName] = useState('');
   const [videoStandard, setVideoStandard] = useState('PAL');
   const [videoDefinition, setVideoDefinition] = useState('SD');
   const [isLoading, setIsLoading] = useState(false);
   
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('/show_reels', {
+      await axios.post('/show_reels', {
         show_reel: {
           name,
           video_standard: videoStandard,
@@ -24,7 +24,7 @@ const ShowReelForm = ({  }) => {
       setName('');
       setVideoStandard('PAL');
       setVideoDefinition('SD');
-      navigate('/show_reels'); // Navigate to the show reels list after successful creation
+      navigate('/show_reels');
     } catch (error) {
       console.error('Error creating show reel:', error);
     } finally {

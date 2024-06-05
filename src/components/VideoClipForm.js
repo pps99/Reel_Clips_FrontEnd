@@ -17,7 +17,7 @@ const VideoClipForm = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post(`/show_reels/${showReelId}/clips`, {
+      await axios.post(`/show_reels/${showReelId}/clips`, {
         clip: {
           name,
           description,
