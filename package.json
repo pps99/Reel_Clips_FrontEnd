@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "process.env.REACT_APP_PROXY || http://localhost:8000",
+  "proxy": "https://reel-clips-backend.onrender.com",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
